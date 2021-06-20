@@ -1,4 +1,3 @@
-
 // 1) За допомоги циклу проітерувати  масив users, записати кожного юзера в свій блок за
 // допомоги document.createElement. Вставити цей блок на сторінку.
 //
@@ -83,7 +82,6 @@
 // `;
 //     document.body.appendChild(userDiv);
 // }
-
 
 
 // 2)  За допомоги циклу проітерувати  масив users, записати кожного юзера в свій блок за допомоги
@@ -216,7 +214,6 @@
 // }
 
 
-
 // 3) Є масив котрий характеризує правила.
 //     Створити скрипт який ітерує цей масив, та робить кожне правило в окремому блоці.
 //     При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
@@ -277,6 +274,150 @@
 //     i++;
 // }
 //
+
+
+//-------------------------------------------------------------------------------------------------------------------
+//                       ЗАВДАННЯ  від  Віті (promise or async await)
+//-------------------------------------------------------------------------------------------------------------------
+//
+//
+//     Зробити свій розпорядок дня.
+//
+//     У вас має бути більше 10 асинхронних дій з рандомними затримками.
+//     Вам необхідно синхронізувати всі свої дії за допомогою промісів та async await (Код має бути написаний окремо)
+// Затримка має бути НЕ в порядку зростання, а будь яка. При тому ваші дії мають бути синхронізовані.
+//
+//     Напиклад.
+//     Прикнутись - 0.3с
+// Поснідати - 1с
+// Піти в душ - 0.5с
+// Дочекатись автобус - 3с
+// Пообідати - 1с
+//
+// І так далі
+
+
+function wakeup(isWakeupDone) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (isWakeupDone) {
+                resolve('Good morning');
+            } else {
+                reject('Sweet dreams');
+            }
+        }, 300)
+    })
+}
+
+function haveABreakfast(haveABreakfastDone) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (haveABreakfastDone) {
+                resolve('Bon appetite');
+            } else {
+                reject('No meal!');
+            }
+        }, 2000)
+    })
+}
+
+
+function goToShower(isGoToShowerDone) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (isGoToShowerDone) {
+                resolve('Body is clean');
+            } else {
+                reject('Dirty!!!');
+            }
+        }, 500)
+    })
+}
+
+
+function waitTheBus(isBusHere) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (isBusHere) {
+                resolve('On time!');
+            } else {
+                reject('Bus is late');
+            }
+        }, 3000)
+    })
+}
+
+function haveALunch(haveALunchDone) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (haveALunchDone) {
+                resolve('Time for lunch');
+            } else {
+                reject('I am hungry!');
+            }
+        }, 1000)
+    })
+}
+
+
+// wakeup(true)
+//     .then(result => {
+//         console.log(result);
+//
+//         return haveABreakfast(true)
+//     })
+//     .then(result2 => {
+//         console.log('Nice breakfast!');
+//
+//         return goToShower(true)
+//     })
+//     .then(result3 => {
+//         console.log('I am after shower');
+//
+//         return waitTheBus(true)
+//     })
+//     .then(result4 => {
+//         console.log('Bus has come on time!');
+//
+//         return haveALunch(true)
+//     })
+//     .then(result5 => {
+//         console.log('Lunch was delicious');
+//     })
+//     .catch(reason => {
+//         console.log(`**************************************************`);
+//         console.log(reason);
+//         console.log(`**************************************************`);
+//     })
+
+//                  OR
+
+
+async function newDay() {
+    try {
+        let resultDay = await wakeup(true);
+        console.log(resultDay);
+
+        let breakfast = await haveABreakfast(true);
+        console.log(breakfast);
+
+        let shower = await goToShower(true);
+        console.log(shower);
+
+        let bus = await waitTheBus(false);
+        console.log(bus);
+
+        let lunch = await haveALunch(true);
+        console.log(lunch);
+    } catch (e) {
+        console.log(`**************************************************`);
+        console.log(e, ' - ERROR -');
+        console.log(`**************************************************`);
+    }
+}
+
+
+newDay();
 
 
 
