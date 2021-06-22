@@ -302,9 +302,8 @@ function wakeup(isWakeupDone) {
         setTimeout(() => {
             if (isWakeupDone) {
                 resolve('Good morning');
-            } else {
-                reject('Sweet dreams');
             }
+            reject('Sweet dreams');              // TODO використову early return pattern
         }, 300)
     })
 }
@@ -314,9 +313,8 @@ function haveABreakfast(haveABreakfastDone) {
         setTimeout(() => {
             if (haveABreakfastDone) {
                 resolve('Bon appetite');
-            } else {
-                reject('No meal!');
             }
+            reject('No meal!');                   // TODO використову early return pattern
         }, 2000)
     })
 }
@@ -327,9 +325,8 @@ function goToShower(isGoToShowerDone) {
         setTimeout(() => {
             if (isGoToShowerDone) {
                 resolve('Body is clean');
-            } else {
-                reject('Dirty!!!');
             }
+            reject('Dirty!!!');                  // TODO використову early return pattern
         }, 500)
     })
 }
@@ -340,9 +337,8 @@ function waitTheBus(isBusHere) {
         setTimeout(() => {
             if (isBusHere) {
                 resolve('On time!');
-            } else {
-                reject('Bus is late');
             }
+            reject('Bus is late');               // TODO використову early return pattern
         }, 3000)
     })
 }
@@ -352,9 +348,8 @@ function haveALunch(haveALunchDone) {
         setTimeout(() => {
             if (haveALunchDone) {
                 resolve('Time for lunch');
-            } else {
-                reject('I am hungry!');
             }
+            reject('I am hungry!');              // TODO використову early return pattern
         }, 1000)
     })
 }
@@ -393,31 +388,31 @@ function haveALunch(haveALunchDone) {
 //                  OR
 
 
-async function newDay() {
-    try {
-        let resultDay = await wakeup(true);
-        console.log(resultDay);
-
-        let breakfast = await haveABreakfast(true);
-        console.log(breakfast);
-
-        let shower = await goToShower(true);
-        console.log(shower);
-
-        let bus = await waitTheBus(false);
-        console.log(bus);
-
-        let lunch = await haveALunch(true);
-        console.log(lunch);
-    } catch (e) {
-        console.log(`**************************************************`);
-        console.log(e, ' - ERROR -');
-        console.log(`**************************************************`);
-    }
-}
-
-
-newDay();
+// async function newDay() {
+//     try {
+//         let resultDay = await wakeup(true);
+//         console.log(resultDay);
+//
+//         let breakfast = await haveABreakfast(true);
+//         console.log(breakfast);
+//
+//         let shower = await goToShower(true);
+//         console.log(shower);
+//
+//         let bus = await waitTheBus(false);
+//         console.log(bus);
+//
+//         let lunch = await haveALunch(true);
+//         console.log(lunch);
+//     } catch (e) {
+//         console.log(`**************************************************`);
+//         console.log(e, ' - ERROR -');
+//         console.log(`**************************************************`);
+//     }
+// }
+//
+//
+// newDay();
 
 
 
